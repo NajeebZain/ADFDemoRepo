@@ -1,0 +1,6 @@
+{
+	"name": "selfHostedintegrationRuntimeOnPremSqlDB",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "onPremSqlServerLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "IN-5CG0365Y2H",
+			"database": "selfhosted",
+			"encrypt": "optional",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmYzI2ODQ1Ny02ZjNhLTQwZGUtYjg3MS05Y2FhYjlhNGU1ZjIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfHostedintegrationRuntimeOnPremSqlDB",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
