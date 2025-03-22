@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "demoadfnajeeb"
+		},
+		"AmazonS3_LS_secretAccessKey": {
+			"value": ""
+		},
+		"AzureBlobStorageLinkedService_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorageLS_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabaseLS_password": {
+			"value": ""
+		},
+		"CosmosDbNoSql_LS_connectionString": {
+			"value": ""
+		},
+		"onPremSqlServerLS_password": {
+			"value": ""
+		},
+		"AmazonS3_LS_properties_typeProperties_accessKeyId": {
+			"value": "AKIA6QMZ77RR55ZE4A7Y"
+		},
+		"AzureDataLakeStorageLS_properties_typeProperties_url": {
+			"value": "https://delab202425adls.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_server": {
+			"value": "adfsqlserver2025.database.windows.net"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_database": {
+			"value": "sqldatabase"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_userName": {
+			"value": "adfsa"
+		},
+		"onPremSqlServerLS_properties_typeProperties_server": {
+			"value": "IN-5CG0365Y2H"
+		},
+		"onPremSqlServerLS_properties_typeProperties_database": {
+			"value": "selfhosted"
+		},
+		"onPremSqlServerLS_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

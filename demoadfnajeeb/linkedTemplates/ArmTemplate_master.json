@@ -1,0 +1,140 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "demoadfnajeeb"
+		},
+		"AmazonS3_LS_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'AmazonS3_LS'"
+		},
+		"AzureBlobStorageLinkedService_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageLinkedService'"
+		},
+		"AzureDataLakeStorageLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorageLS'"
+		},
+		"AzureSqlDatabaseLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseLS'"
+		},
+		"CosmosDbNoSql_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CosmosDbNoSql_LS'"
+		},
+		"onPremSqlServerLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'onPremSqlServerLS'"
+		},
+		"AmazonS3_LS_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIA6QMZ77RR55ZE4A7Y"
+		},
+		"AzureDataLakeStorageLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://delab202425adls.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adfsqlserver2025.database.windows.net"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqldatabase"
+		},
+		"AzureSqlDatabaseLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adfsa"
+		},
+		"onPremSqlServerLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "IN-5CG0365Y2H"
+		},
+		"onPremSqlServerLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "selfhosted"
+		},
+		"onPremSqlServerLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "demoadfnajeeb_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AmazonS3_LS_secretAccessKey": {
+						"value": "[parameters('AmazonS3_LS_secretAccessKey')]"
+					},
+					"AzureBlobStorageLinkedService_connectionString": {
+						"value": "[parameters('AzureBlobStorageLinkedService_connectionString')]"
+					},
+					"AzureDataLakeStorageLS_accountKey": {
+						"value": "[parameters('AzureDataLakeStorageLS_accountKey')]"
+					},
+					"AzureSqlDatabaseLS_password": {
+						"value": "[parameters('AzureSqlDatabaseLS_password')]"
+					},
+					"CosmosDbNoSql_LS_connectionString": {
+						"value": "[parameters('CosmosDbNoSql_LS_connectionString')]"
+					},
+					"onPremSqlServerLS_password": {
+						"value": "[parameters('onPremSqlServerLS_password')]"
+					},
+					"AmazonS3_LS_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('AmazonS3_LS_properties_typeProperties_accessKeyId')]"
+					},
+					"AzureDataLakeStorageLS_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorageLS_properties_typeProperties_url')]"
+					},
+					"AzureSqlDatabaseLS_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabaseLS_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabaseLS_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabaseLS_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabaseLS_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabaseLS_properties_typeProperties_userName')]"
+					},
+					"onPremSqlServerLS_properties_typeProperties_server": {
+						"value": "[parameters('onPremSqlServerLS_properties_typeProperties_server')]"
+					},
+					"onPremSqlServerLS_properties_typeProperties_database": {
+						"value": "[parameters('onPremSqlServerLS_properties_typeProperties_database')]"
+					},
+					"onPremSqlServerLS_properties_typeProperties_userName": {
+						"value": "[parameters('onPremSqlServerLS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
