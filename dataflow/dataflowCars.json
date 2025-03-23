@@ -14,7 +14,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "selectCars"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Make as string,",
@@ -31,7 +35,17 @@
 				"     partitionBy('key',",
 				"          0,",
 				"          Origin",
-				"     )) ~> carsData"
+				"     )) ~> carsData",
+				"carsData select(mapColumn(",
+				"          CarMake = Make,",
+				"          Model,",
+				"          Type,",
+				"          Origin,",
+				"          DriveTrain,",
+				"          Length",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectCars"
 			]
 		}
 	}
