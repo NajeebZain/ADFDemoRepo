@@ -1,0 +1,37 @@
+{
+	"name": "dataflowTitanic",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Titanic_adls_csv",
+						"type": "DatasetReference"
+					},
+					"name": "sourceTitanic"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumnFnameLname"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Name as string,",
+				"          PClass as string,",
+				"          Age as double,",
+				"          Sex as string,",
+				"          Survived as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourceTitanic",
+				"sourceTitanic derive({First Name} = split(Name,', ')[2],",
+				"          {Last Name} = split(Name,', ')[1]) ~> derivedColumnFnameLname"
+			]
+		}
+	}
+}
