@@ -1,0 +1,38 @@
+{
+	"name": "dataflowCars",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_adls_csv",
+						"type": "DatasetReference"
+					},
+					"name": "carsData",
+					"description": "Cars dataset"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Make as string,",
+				"          Model as string,",
+				"          Type as string,",
+				"          Origin as string,",
+				"          DriveTrain as string,",
+				"          Length as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 100,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('key',",
+				"          0,",
+				"          Origin",
+				"     )) ~> carsData"
+			]
+		}
+	}
+}
