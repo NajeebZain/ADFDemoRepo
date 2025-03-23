@@ -16,6 +16,9 @@
 			"sinks": [],
 			"transformations": [
 				{
+					"name": "aggregateType"
+				},
+				{
 					"name": "selectCars"
 				}
 			],
@@ -36,6 +39,9 @@
 				"          0,",
 				"          Origin",
 				"     )) ~> carsData",
+				"selectCars aggregate(groupBy(CarMake,",
+				"          Type),",
+				"     TypeCount = count()) ~> aggregateType",
 				"carsData select(mapColumn(",
 				"          CarMake = Make,",
 				"          Model,",
