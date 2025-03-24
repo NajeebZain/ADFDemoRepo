@@ -1,0 +1,51 @@
+{
+	"name": "dataflowGreenTaxis",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_adls_GreenTaxis",
+						"type": "DatasetReference"
+					},
+					"name": "sourceADLS",
+					"description": "ADLS Green Taxi dataset"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColtoDatePickup",
+					"description": "Changing column lpep_pickup_datetime data type from string to date"
+				},
+				{
+					"name": "castDropoff"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          VendorID as short,",
+				"          lpep_pickup_datetime as string,",
+				"          lpep_dropoff_datetime as string,",
+				"          passenger_count as short,",
+				"          trip_distance as double,",
+				"          fare_amount as double,",
+				"          mta_tax as double,",
+				"          tip_amount as double,",
+				"          tolls_amount as double,",
+				"          total_amount as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     timestampFormats: ['dd-MM-yyyy HH:mm']) ~> sourceADLS",
+				"sourceADLS derive(lpep_pickup_datetime = toTimestamp(lpep_pickup_datetime, 'dd-MM-yyyy HH:mm')) ~> derivedColtoDatePickup",
+				"derivedColtoDatePickup cast(output(",
+				"          lpep_dropoff_datetime as timestamp 'dd-MM-yyyy HH:mm'",
+				"     ),",
+				"     errors: true) ~> castDropoff"
+			]
+		}
+	}
+}
