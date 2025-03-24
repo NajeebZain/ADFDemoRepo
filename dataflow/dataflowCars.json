@@ -16,10 +16,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "aggregateType"
+					"name": "selectCars"
 				},
 				{
-					"name": "selectCars"
+					"name": "aggregateType"
 				}
 			],
 			"scriptLines": [
@@ -39,9 +39,6 @@
 				"          0,",
 				"          Origin",
 				"     )) ~> carsData",
-				"selectCars aggregate(groupBy(CarMake,",
-				"          Type),",
-				"     TypeCount = count()) ~> aggregateType",
 				"carsData select(mapColumn(",
 				"          CarMake = Make,",
 				"          Model,",
@@ -51,7 +48,10 @@
 				"          Length",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectCars"
+				"     skipDuplicateMapOutputs: true) ~> selectCars",
+				"selectCars aggregate(groupBy(CarMake,",
+				"          Type),",
+				"     TypeCount = count()) ~> aggregateType"
 			]
 		}
 	}
