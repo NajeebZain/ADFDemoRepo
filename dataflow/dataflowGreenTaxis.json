@@ -13,7 +13,16 @@
 					"description": "ADLS Green Taxi dataset"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_SQLDB_GreenTaxis",
+						"type": "DatasetReference"
+					},
+					"name": "sinkSQLdatabase",
+					"description": "Sink dataset is SQQL database table (demoAdf.GreenTaxis)"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColtoDatePickup",
@@ -21,6 +30,10 @@
 				},
 				{
 					"name": "castDropoff"
+				},
+				{
+					"name": "sortTotalAmount",
+					"description": "Sorting total_amount column"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +57,19 @@
 				"derivedColtoDatePickup cast(output(",
 				"          lpep_dropoff_datetime as timestamp 'dd-MM-yyyy HH:mm'",
 				"     ),",
-				"     errors: true) ~> castDropoff"
+				"     errors: true) ~> castDropoff",
+				"castDropoff sort(desc(total_amount, true)) ~> sortTotalAmount",
+				"sortTotalAmount sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sinkSQLdatabase"
 			]
 		}
 	}
