@@ -1,0 +1,16 @@
+{
+	"name": "DS_SQLDB_GreenTaxis",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "demoAdf",
+			"table": "GreenTaxis"
+		}
+	}
+}
