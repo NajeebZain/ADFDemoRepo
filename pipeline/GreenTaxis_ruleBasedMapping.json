@@ -17,7 +17,15 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "DF_GreenTaxis_ruleBasedMapping",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"filename": "$filename"
+						},
+						"datasetParameters": {
+							"adlsGreenTaxis": {
+								"filename": "$filename"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
