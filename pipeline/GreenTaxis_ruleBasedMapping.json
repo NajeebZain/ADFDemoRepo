@@ -23,6 +23,11 @@
 								"value": "'@{pipeline().parameters.EnterFilename}'",
 								"type": "Expression"
 							}
+						},
+						"datasetParameters": {
+							"adlsGreenTaxis": {
+								"filename": "$filename"
+							}
 						}
 					},
 					"compute": {
