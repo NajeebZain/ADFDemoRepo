@@ -20,13 +20,8 @@
 						"type": "DataFlowReference",
 						"parameters": {
 							"filename": {
-								"value": "'@{variables('Enterfilename')}'",
+								"value": "'@{pipeline().parameters.EnterFilename}'",
 								"type": "Expression"
-							}
-						},
-						"datasetParameters": {
-							"adlsGreenTaxis": {
-								"filename": "$filename"
 							}
 						}
 					},
@@ -38,9 +33,9 @@
 				}
 			}
 		],
-		"variables": {
-			"Enterfilename": {
-				"type": "String"
+		"parameters": {
+			"EnterFilename": {
+				"type": "string"
 			}
 		},
 		"annotations": []
