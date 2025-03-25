@@ -1,0 +1,46 @@
+{
+	"name": "DF_GreenTaxis_ruleBasedMapping",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_adls_GreenTaxis_ruleBasedMapping",
+						"type": "DatasetReference"
+					},
+					"name": "adlsGreenTaxis"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_SQLDB_GreenTaxis",
+						"type": "DatasetReference"
+					},
+					"name": "SQLDBdemoAdfGreenTaxis"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"parameters{",
+				"     filename as string",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     wildcardPaths:['$filename']) ~> adlsGreenTaxis",
+				"adlsGreenTaxis sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> SQLDBdemoAdfGreenTaxis"
+			]
+		}
+	}
+}
