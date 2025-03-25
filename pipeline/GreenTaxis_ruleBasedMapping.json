@@ -28,6 +28,13 @@
 							"adlsGreenTaxis": {
 								"filename": "$filename"
 							}
+						},
+						"linkedServiceParameters": {
+							"adlsGreenTaxis": {
+								"schemaLinkedService": {
+									"filename": "$filename"
+								}
+							}
 						}
 					},
 					"compute": {
