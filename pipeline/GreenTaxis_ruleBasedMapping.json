@@ -17,25 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "DF_GreenTaxis_ruleBasedMapping",
-						"type": "DataFlowReference",
-						"parameters": {
-							"filename": {
-								"value": "'@{pipeline().parameters.EnterFilename}'",
-								"type": "Expression"
-							}
-						},
-						"datasetParameters": {
-							"adlsGreenTaxis": {
-								"filename": "$filename"
-							}
-						},
-						"linkedServiceParameters": {
-							"adlsGreenTaxis": {
-								"schemaLinkedService": {
-									"filename": "$filename"
-								}
-							}
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
