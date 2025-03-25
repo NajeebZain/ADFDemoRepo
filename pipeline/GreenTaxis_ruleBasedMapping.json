@@ -19,7 +19,10 @@
 						"referenceName": "DF_GreenTaxis_ruleBasedMapping",
 						"type": "DataFlowReference",
 						"parameters": {
-							"filename": "$filename"
+							"filename": {
+								"value": "'@{variables('Enterfilename')}'",
+								"type": "Expression"
+							}
 						},
 						"datasetParameters": {
 							"adlsGreenTaxis": {
@@ -35,6 +38,11 @@
 				}
 			}
 		],
+		"variables": {
+			"Enterfilename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
