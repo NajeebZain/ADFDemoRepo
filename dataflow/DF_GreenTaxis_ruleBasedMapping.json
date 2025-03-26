@@ -21,12 +21,17 @@
 					"name": "SQLDBdemoAdfGreenTaxis"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumnDataTypeConversion"
+				}
+			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> adlsGreenTaxis",
-				"adlsGreenTaxis sink(allowSchemaDrift: true,",
+				"adlsGreenTaxis derive(lpep_pickup_datetime = toDate(byName(lpep_pickup_datetime), 'dd-MM-yyyy HH:mm')) ~> derivedColumnDataTypeConversion",
+				"derivedColumnDataTypeConversion sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
