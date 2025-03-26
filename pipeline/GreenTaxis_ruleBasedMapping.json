@@ -18,12 +18,6 @@
 					"dataflow": {
 						"referenceName": "DF_GreenTaxis_ruleBasedMapping",
 						"type": "DataFlowReference",
-						"parameters": {
-							"filename": {
-								"value": "'@{pipeline().parameters.EnterFilename}'",
-								"type": "Expression"
-							}
-						},
 						"datasetParameters": {
 							"adlsGreenTaxis": {
 								"ds_filename": {
