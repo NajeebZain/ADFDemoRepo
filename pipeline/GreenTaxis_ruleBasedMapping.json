@@ -21,7 +21,7 @@
 						"datasetParameters": {
 							"adlsGreenTaxis": {
 								"ds_filename": {
-									"value": "@pipeline().parameters.EnterFilename",
+									"value": "@pipeline().parameters.EnterFileName",
 									"type": "Expression"
 								}
 							}
@@ -36,7 +36,7 @@
 			}
 		],
 		"parameters": {
-			"EnterFilename": {
+			"EnterFileName": {
 				"type": "string"
 			}
 		},
