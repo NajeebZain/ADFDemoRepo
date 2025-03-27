@@ -24,13 +24,28 @@
 			"transformations": [
 				{
 					"name": "derivedColumnDataTypeConversion"
+				},
+				{
+					"name": "selectChange4colNames"
 				}
 			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> adlsGreenTaxis",
-				"adlsGreenTaxis derive(each(match(locate('datetime', lower(name)) != 0), $$ = toTimestamp(toString($$), 'dd-MM-yyyy HH:mm'))) ~> derivedColumnDataTypeConversion",
+				"selectChange4colNames derive(each(match(locate('datetime', lower(name)) != 0), $$ = toTimestamp(toString($$), 'dd-MM-yyyy HH:mm'))) ~> derivedColumnDataTypeConversion",
+				"adlsGreenTaxis select(mapColumn(",
+				"          each(match(locate('vendor',lower(name)) != 0),",
+				"               'VendorID' = $$),",
+				"          each(match(locate('passenger',lower(name)) != 0),",
+				"               'passenger_count' = $$),",
+				"          each(match(locate('trip',lower(name)) != 0),",
+				"               'trip_distance' = $$),",
+				"          each(match(locate('fare',lower(name)) != 0),",
+				"               'fare_amount' = $$)",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectChange4colNames",
 				"derivedColumnDataTypeConversion sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
