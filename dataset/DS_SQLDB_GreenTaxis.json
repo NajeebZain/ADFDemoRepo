@@ -7,7 +7,58 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "VendorID",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "lpep_pickup_datetime",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "lpep_dropoff_datetime",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "passenger_count",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "trip_distance",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "fare_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "mta_tax",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tip_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tolls_amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "total_amount",
+				"type": "float",
+				"precision": 15
+			}
+		],
 		"typeProperties": {
 			"schema": "demoAdf",
 			"table": "GreenTaxis"
