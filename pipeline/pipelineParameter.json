@@ -18,10 +18,22 @@
 					"dataflow": {
 						"referenceName": "dataflowParameter",
 						"type": "DataFlowReference",
-						"parameters": {
-							"DFparameter_fname": {
-								"value": "'@{pipeline().parameters.Enter_Filename}'",
-								"type": "Expression"
+						"datasetParameters": {
+							"sourceParameter": {
+								"ds_Source_fname": {
+									"value": "@pipeline().parameters.Enter_Filename",
+									"type": "Expression"
+								}
+							}
+						},
+						"linkedServiceParameters": {
+							"sourceParameter": {
+								"schemaLinkedService": {
+									"ds_Source_fname": {
+										"value": "@pipeline().parameters.Enter_Filename",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					},

@@ -5,11 +5,20 @@
 			"referenceName": "AzureBlobStorageLinkedService",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"ds_Source_fname": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().ds_Source_fname",
+					"type": "Expression"
+				},
 				"container": "delabcontainer"
 			},
 			"columnDelimiter": ",",
