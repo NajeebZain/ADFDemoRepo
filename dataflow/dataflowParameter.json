@@ -1,0 +1,43 @@
+{
+	"name": "dataflowParameter",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Parameter_Source_Blob",
+						"type": "DatasetReference"
+					},
+					"name": "sourceParameter"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_Parameter_Sink_adls",
+						"type": "DatasetReference"
+					},
+					"name": "sinkParameter"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"parameters{",
+				"     DFparameter_fname as string",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     wildcardPaths:[($DFparameter_fname)]) ~> sourceParameter",
+				"sourceParameter sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkParameter"
+			]
+		}
+	}
+}
