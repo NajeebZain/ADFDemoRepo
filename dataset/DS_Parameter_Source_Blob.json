@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ds_Source_fname": {
+			"ds_source_fname": {
 				"type": "string"
 			}
 		},
@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@dataset().ds_Source_fname",
+					"value": "@dataset().ds_source_fname",
 					"type": "Expression"
 				},
 				"container": "delabcontainer"
