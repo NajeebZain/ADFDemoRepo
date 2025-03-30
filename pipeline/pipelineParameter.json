@@ -1,6 +1,38 @@
 {
-	"name": "pipelineParameterDataflow",
+	"name": "pipelineParameter",
 	"properties": {
+		"activities": [
+			{
+				"name": "Data flow Parameter",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflowParameter",
+						"type": "DataFlowReference",
+						"parameters": {
+							"DFparameter_fname": {
+								"value": "'@{pipeline().parameters.Enter_Filename}'",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
 		"parameters": {
 			"Enter_Filename": {
 				"type": "string"
