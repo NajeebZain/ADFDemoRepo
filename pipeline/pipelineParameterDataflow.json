@@ -1,0 +1,11 @@
+{
+	"name": "pipelineParameterDataflow",
+	"properties": {
+		"parameters": {
+			"Enter_Filename": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
